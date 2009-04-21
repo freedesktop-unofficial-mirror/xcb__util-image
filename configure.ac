@@ -3,9 +3,25 @@ AC_INIT([xcb-util],0.3.4,[xcb@lists.freedesktop.org])
 AC_CONFIG_SRCDIR([Makefile.am])
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 
-AC_CHECK_PROGS(M4, m4, [no])
+AC_CHECK_PROGS(M4, [m4 gm4], [no])
+if test $M4 != "no" ; then
+	AC_MSG_CHECKING([if $M4 supports -I])
+	if $M4 -I. /dev/null > /dev/null 2>&1 ; then
+		AC_MSG_RESULT([yes])
+	else
+		AC_MSG_RESULT([no])
+		# Try finding the gnu version
+		AC_CHECK_PROGS(GM4, gm4, [no])
+		if test $GM4 = "no" ; then
+			AC_PATH_PROGS(GNUM4, m4, [no], [/usr/gnu/bin])
+			M4="$GNUM4"
+		else
+			M4="$GM4"
+		fi
+	fi
+fi
 if test $M4 = "no"; then
-	AC_MSG_ERROR([Can't find m4, please install it and try again])
+	AC_MSG_ERROR([Can't find usable m4, please install it and try again])
 fi
 AC_CHECK_PROGS(GPERF, gperf, [no])
 if test $GPERF = "no"; then
