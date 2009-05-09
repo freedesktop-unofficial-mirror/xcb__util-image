@@ -47,7 +47,7 @@ AC_SUBST(xcbincludedir)
 pkgconfigdir='${libdir}/pkgconfig'
 AC_SUBST(pkgconfigdir)
 
-PKG_CHECK_MODULES(XCB, xcb >= 1.0)
+PKG_CHECK_MODULES(XCB, xcb > 1.2)
 PKG_CHECK_MODULES(XCB_SHM, xcb-shm)
 PKG_CHECK_MODULES(XCB_RENDER, xcb-render)
 PKG_CHECK_MODULES(XPROTO, xproto >= 7.0.8)
