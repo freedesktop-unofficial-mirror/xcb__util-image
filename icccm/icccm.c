@@ -70,7 +70,8 @@ xcb_get_text_property_reply(xcb_connection_t *c,
   return 1;
 }
 
-void xcb_get_text_property_reply_wipe(xcb_get_text_property_reply_t *prop)
+void
+xcb_get_text_property_reply_wipe(xcb_get_text_property_reply_t *prop)
 {
   free(prop->_reply);
 }
@@ -268,7 +269,8 @@ xcb_get_wm_class_reply(xcb_connection_t *c, xcb_get_property_cookie_t cookie,
   return ret;
 }
 
-void xcb_get_wm_class_reply_wipe(xcb_get_wm_class_reply_t *prop)
+void
+xcb_get_wm_class_reply_wipe(xcb_get_wm_class_reply_t *prop)
 {
   free(prop->_reply);
 }
@@ -388,7 +390,7 @@ xcb_size_hints_set_base_size(xcb_size_hints_t *hints, int32_t base_width,
 }
 
 void
-xcb_size_hints_set_win_gravity(xcb_size_hints_t *hints, uint32_t win_gravity)
+xcb_size_hints_set_win_gravity(xcb_size_hints_t *hints, xcb_gravity_t win_gravity)
 {
   hints->flags |= XCB_SIZE_HINT_P_WIN_GRAVITY;
   hints->win_gravity = win_gravity;
@@ -605,15 +607,17 @@ xcb_set_wm_hints(xcb_connection_t *c, xcb_window_t window,
                       sizeof(*hints) >> 2, hints);
 }
 
-xcb_get_property_cookie_t xcb_get_wm_hints(xcb_connection_t *c,
-                                           xcb_window_t window)
+xcb_get_property_cookie_t
+xcb_get_wm_hints(xcb_connection_t *c,
+                 xcb_window_t window)
 {
   return xcb_get_property(c, 0, window, WM_HINTS, WM_HINTS, 0L,
                           XCB_NUM_WM_HINTS_ELEMENTS);
 }
 
-xcb_get_property_cookie_t xcb_get_wm_hints_unchecked(xcb_connection_t *c,
-                                                     xcb_window_t window)
+xcb_get_property_cookie_t
+xcb_get_wm_hints_unchecked(xcb_connection_t *c,
+                           xcb_window_t window)
 {
   return xcb_get_property_unchecked(c, 0, window, WM_HINTS, WM_HINTS, 0L,
                                     XCB_NUM_WM_HINTS_ELEMENTS);
