@@ -46,7 +46,26 @@ AC_SUBST(xcbincludedir)
 pkgconfigdir='${libdir}/pkgconfig'
 AC_SUBST(pkgconfigdir)
 
-PKG_CHECK_MODULES(XCB, xcb >= 1.0)
+PKG_CHECK_MODULES(XCB, xcb >= 1.2)
+
+######
+# Check version of xcb-proto that xcb was compiled against
+######
+xcbproto_required=1.5
+
+# Moved from AX_COMPARE_VERSION to maintain proper output
+AC_PROG_AWK
+
+AC_MSG_CHECKING([whether libxcb was compiled against xcb-proto >= $xcbproto_required])
+xcbproto_version=`$PKG_CONFIG --variable=xcbproto_version xcb`
+AX_COMPARE_VERSION([$xcbproto_version],[ge],[$xcbproto_required], xcbproto_ok="yes", xcbproto_ok="no")
+AC_MSG_RESULT([$xcbproto_ok])
+
+if test $xcbproto_ok = no; then
+	AC_MSG_ERROR([libxcb was compiled against xcb-proto $xcbproto_version; it needs needs to be compiled against version $xcbproto_required or higher])
+fi
+
+
 PKG_CHECK_MODULES(XCB_SHM, xcb-shm)
 PKG_CHECK_MODULES(XCB_RENDER, xcb-render)
 PKG_CHECK_MODULES(XPROTO, xproto >= 7.0.8)
