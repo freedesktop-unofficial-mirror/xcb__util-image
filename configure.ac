@@ -63,7 +63,7 @@ AX_COMPARE_VERSION([$xcbproto_version],[ge],[$xcbproto_required], xcbproto_ok="y
 AC_MSG_RESULT([$xcbproto_ok])
 
 if test $xcbproto_ok = no; then
-	AC_MSG_ERROR([libxcb was compiled against xcb-proto $xcbproto_version; it needs needs to be compiled against version $xcbproto_required or higher])
+	AC_MSG_ERROR([libxcb was compiled against xcb-proto $xcbproto_version; it needs to be compiled against version $xcbproto_required or higher])
 fi
 
 
