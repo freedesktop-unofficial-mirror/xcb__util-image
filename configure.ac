@@ -1,4 +1,5 @@
-AC_PREREQ(2.57)
+dnl AC_TYPE_SSIZE_T is defined from 2.59c
+AC_PREREQ(2.59c)
 AC_INIT([xcb-util],0.3.5,[xcb@lists.freedesktop.org])
 AC_CONFIG_SRCDIR([Makefile.am])
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
@@ -39,6 +40,9 @@ else
     fi
 fi
 AC_SUBST(CWARNFLAGS)
+
+dnl Checking whether ssize_t is defined (xcb-util-common.h)
+AC_TYPE_SSIZE_T
 
 xcbincludedir='${includedir}/xcb'
 AC_SUBST(xcbincludedir)
