@@ -708,7 +708,7 @@ xcb_get_wm_protocols_reply(xcb_connection_t *c,
   }
 
   protocols->_reply = reply;
-  protocols->atoms_len = xcb_get_property_value_length(protocols->_reply);
+  protocols->atoms_len = xcb_get_property_value_length(protocols->_reply) /  (reply->format / 8);
   protocols->atoms = (xcb_atom_t *) xcb_get_property_value(protocols->_reply);
 
   return 1;
