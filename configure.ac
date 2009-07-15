@@ -51,7 +51,7 @@ AC_SUBST(xcbincludedir)
 pkgconfigdir='${libdir}/pkgconfig'
 AC_SUBST(pkgconfigdir)
 
-PKG_CHECK_MODULES(XCB, xcb >= 1.2)
+PKG_CHECK_MODULES(XCB, xcb >= 1.4)
 
 ######
 # Check version of xcb-proto that xcb was compiled against
