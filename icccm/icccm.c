@@ -472,7 +472,7 @@ uint8_t
 xcb_get_wm_size_hints_reply(xcb_connection_t *c, xcb_get_property_cookie_t cookie,
                             xcb_size_hints_t *hints, xcb_generic_error_t **e)
 {
-  xcb_get_property_reply_t *reply = reply = xcb_get_property_reply(c, cookie, e);
+  xcb_get_property_reply_t *reply = xcb_get_property_reply(c, cookie, e);
   uint8_t ret = xcb_get_wm_size_hints_from_reply(hints, reply);
   free(reply);
   return ret;
