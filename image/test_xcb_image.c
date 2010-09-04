@@ -33,7 +33,7 @@
 
 #include <xcb/xcb.h>
 
-#include "../aux/xcb_aux.h"
+#include <xcb/xcb_aux.h>
 #include "xcb_image.h"
 
 #define W_W 64

@@ -32,8 +32,8 @@
 #include <string.h>
 #include <assert.h>
 #include <xcb/xcb.h>
-#include "../aux/xcb_aux.h"
-#include "../event/xcb_event.h"
+#include <xcb/xcb_aux.h>
+#include <xcb/xcb_event.h>
 #include "xcb_image.h"
 
 #include "test.xbm"

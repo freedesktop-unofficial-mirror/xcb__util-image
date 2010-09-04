@@ -1,0 +1,5 @@
+ACLOCAL_AMFLAGS = -I m4
+
+MAINTAINERCLEANFILES = Makefile.in
+
+SUBDIRS = image

@@ -29,8 +29,8 @@
 
 #include <xcb/xcb.h>
 #include <xcb/shm.h>
-#include "../aux/xcb_aux.h"
-#include "../aux/xcb_bitops.h"
+#include <xcb/xcb_aux.h>
+#include <xcb/xcb_bitops.h>
 #include "xcb_image.h"
 #define BUILD
 #include "xcb_pixel.h"

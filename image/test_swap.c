@@ -31,7 +31,7 @@
 #include <string.h>
 #include <assert.h>
 #include <xcb/xcb.h>
-#include "../aux/xcb_aux.h"
+#include <xcb/xcb_aux.h>
 #include "xcb_image.h"
 
 xcb_image_format_t  formats[] = {
