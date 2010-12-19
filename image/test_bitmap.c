@@ -69,12 +69,12 @@ static xcb_window_t make_window(xcb_connection_t *c,
     return w;
 }
 
-void process_events(xcb_connection_t *c,
-		    xcb_gcontext_t g,
-		    xcb_window_t w,
-		    xcb_pixmap_t p,
-		    uint32_t width,
-		    uint32_t height) {
+static void process_events(xcb_connection_t *c,
+			   xcb_gcontext_t g,
+			   xcb_window_t w,
+			   xcb_pixmap_t p,
+			   uint32_t width,
+			   uint32_t height) {
     xcb_generic_event_t *e;
     xcb_void_cookie_t cookie;
 

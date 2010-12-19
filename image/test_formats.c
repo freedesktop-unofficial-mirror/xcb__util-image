@@ -43,7 +43,6 @@ color (uint32_t depth, uint32_t x, uint32_t y)
 	uint32_t p;
 
 	if (depth == 1) {
-		extern long random();
 		int frac = random() % (WIDTH * HEIGHT);
 		p = x * y >= frac;
 		return p;

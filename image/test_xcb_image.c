@@ -39,7 +39,7 @@
 #define W_W 64
 #define W_H 64
 
-void
+static void
 reflect_window (xcb_connection_t *c,
 		xcb_drawable_t win,
 		xcb_drawable_t new_win,
