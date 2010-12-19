@@ -327,16 +327,18 @@ xcb_image_get (xcb_connection_t *  conn,
 	  xcb_image_t *  tmp_image =
 	    xcb_image_create_native(conn, width, height, format,
 				    imrep->depth, 0, 0, 0);
-	  int            i;
-	  uint32_t       rpm = plane_mask;
-	  uint8_t *      src_plane = image->data;
-	  uint8_t *      dst_plane = tmp_image->data;
-	  uint32_t       size = image->height * image->stride;
 	  
 	  if (!tmp_image) {
 	      free(imrep);
 	      return 0;
 	  }
+
+	  int            i;
+	  uint32_t       rpm = plane_mask;
+	  uint8_t *      src_plane = image->data;
+	  uint8_t *      dst_plane = tmp_image->data;
+	  uint32_t       size = image->height * image->stride;
+
 	  if (tmp_image->bit_order == XCB_IMAGE_ORDER_MSB_FIRST)
 	      rpm = xcb_bit_reverse(plane_mask, imrep->depth);
 	  for (i = 0; i < imrep->depth; i++) {
