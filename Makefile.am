@@ -1,5 +1,15 @@
 ACLOCAL_AMFLAGS = -I m4
 
-MAINTAINERCLEANFILES = Makefile.in
+MAINTAINERCLEANFILES = ChangeLog INSTALL
+
+.PHONY: ChangeLog INSTALL
+
+INSTALL:
+	$(INSTALL_CMD)  
+
+ChangeLog:
+	$(CHANGELOG_CMD)
+
+dist-hook: ChangeLog INSTALL
 
 SUBDIRS = image
