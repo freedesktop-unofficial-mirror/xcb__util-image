@@ -1,0 +1,9 @@
+Release 0.3.8 (2010-04-25)
+==========================
+
+- Split image up into its own repository.
+- Check whether tmp_image is not NULL before trying to dereference it.
+- Ensure that xcb-image sample apps get built.
+- test.xbm is part of the source code for test_bitmap.c.
+- Link with -no-undefined
+- Add AM_MAINTAINER_MODE for vendors.
