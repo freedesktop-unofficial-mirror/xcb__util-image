@@ -31,7 +31,7 @@
 #include <string.h>
 #include <xcb/xcb.h>
 #include <xcb/xcb_aux.h>
-#include <xcb/xcb_bitops.h>
+#include "xcb_bitops.h"
 #include "xcb_image.h"
 
 #define WIDTH 50
