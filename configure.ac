@@ -7,6 +7,8 @@ AM_MAINTAINER_MODE
 
 XCB_UTIL_COMMON([1.4], [1.6])
 
+AC_CHECK_HEADERS([sys/shm.h])
+AM_CONDITIONAL(HAVE_SHM, test x$ac_cv_header_sys_shm_h = xyes)
 PKG_CHECK_MODULES(XCB_SHM, xcb-shm)
 PKG_CHECK_MODULES(XPROTO, xproto >= 7.0.8)
 PKG_CHECK_MODULES(XCB_UTIL, xcb-util)

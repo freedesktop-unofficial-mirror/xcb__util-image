@@ -17,7 +17,11 @@ pkgconfig_DATA = xcb-image.pc
 
 EXTRA_DIST=xcb-image.pc.in
 
-noinst_PROGRAMS = test_xcb_image test_xcb_image_shm test_formats test_bitmap
+noinst_PROGRAMS = test_xcb_image test_formats test_bitmap
+
+if HAVE_SHM
+noinst_PROGRAMS += test_xcb_image_shm
+endif
 
 check_PROGRAMS = test_swap
 
