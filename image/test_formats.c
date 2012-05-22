@@ -102,7 +102,7 @@ static xcb_gcontext_t create_gcontext(xcb_connection_t *c,
 
 
 typedef struct {
-	char *name;
+	const char *name;
 	xcb_image_format_t format;
 	uint8_t depth;
 } format_t;
