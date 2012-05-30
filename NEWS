@@ -1,3 +1,10 @@
+Release 0.3.9 (2012-05-30)
+==========================
+
+- Add missing xcb_bitops.h.
+- Don't try to build test_xcb_image_shm if SHM isn't available (for example on MinGW).
+- Use rand() instead of random() (more portable, for example to MinGW).
+
 Release 0.3.8 (2010-04-25)
 ==========================
 
