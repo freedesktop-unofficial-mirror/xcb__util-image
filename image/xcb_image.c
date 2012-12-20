@@ -187,6 +187,7 @@ xcb_image_create_native (xcb_connection_t *  c,
       assert(0);
   }
   assert(0);
+  return NULL;
 }
 
 
@@ -751,6 +752,7 @@ xcb_image_get_pixel (xcb_image_t *image,
   default:
       assert(0);
   }
+  return 0;
 }
 
 
