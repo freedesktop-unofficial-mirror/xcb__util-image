@@ -325,25 +325,25 @@ xcb_image_get (xcb_connection_t *  conn,
   case XCB_IMAGE_FORMAT_XY_PIXMAP:
       plane_mask &= xcb_mask(imrep->depth);
       if (plane_mask != xcb_mask(imrep->depth)) {
-	  xcb_image_t *  tmp_image =
-	    xcb_image_create_native(conn, width, height, format,
-				    imrep->depth, 0, 0, 0);
-	  
-	  if (!tmp_image) {
-	      free(imrep);
-	      return 0;
-	  }
-
 	  int            i;
 	  uint32_t       rpm = plane_mask;
-	  uint8_t *      src_plane = image->data;
-	  uint8_t *      dst_plane = tmp_image->data;
-	  uint32_t       size = image->height * image->stride;
+	  uint32_t       size;
+	  uint8_t        *src_plane = data;
+	  uint8_t        *dst_plane;
 
-	  if (tmp_image->bit_order == XCB_IMAGE_ORDER_MSB_FIRST)
+          image = xcb_image_create_native(conn, width, height, format,
+                                          imrep->depth, 0, 0, 0);
+          if (!image) {
+              free(imrep);
+              return 0;
+          }
+          image->plane_mask = plane_mask;
+          size = image->height * image->stride;
+          dst_plane = image->data;
+	  if (image->bit_order == XCB_IMAGE_ORDER_MSB_FIRST)
 	      rpm = xcb_bit_reverse(plane_mask, imrep->depth);
 	  for (i = 0; i < imrep->depth; i++) {
-	      if (rpm & 1) {
+	      if (rpm & (1 << i)) {
 		  memcpy(dst_plane, src_plane, size);
 		  src_plane += size;
 	      } else {
@@ -351,24 +351,22 @@ xcb_image_get (xcb_connection_t *  conn,
 	      }
 	      dst_plane += size;
 	  }
-	  tmp_image->plane_mask = plane_mask;
-	  image = tmp_image;
 	  free(imrep);
 	  break;
       }
       /* fall through */
   case XCB_IMAGE_FORMAT_Z_PIXMAP:
       image = xcb_image_create_native(conn, width, height, format,
-				      imrep->depth, imrep, bytes, data);
+				  imrep->depth, imrep, bytes, data);
       if (!image) {
-	  free(imrep);
-	  return 0;
+          free(imrep);
+          return 0;
       }
+      assert(bytes == image->size);
       break;
   default:
       assert(0);
   }
-  assert(bytes == image->size);
   return image;
 }
 
