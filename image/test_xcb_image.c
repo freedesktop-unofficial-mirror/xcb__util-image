@@ -37,8 +37,8 @@
 #include <xcb/xcb_aux.h>
 #include "xcb_image.h"
 
-#define W_W 64
-#define W_H 64
+#define W_W 128
+#define W_H 128
 
 static void
 reflect_window (xcb_connection_t *c,
