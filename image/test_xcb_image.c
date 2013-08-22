@@ -55,13 +55,17 @@ reflect_window (xcb_connection_t *c,
   int32_t     y;
   int         format;
 
-  format = XCB_IMAGE_FORMAT_Z_PIXMAP;
+  format = XCB_IMAGE_FORMAT_XY_PIXMAP;
 
   printf ("get_image %d %d\n", width, height);
   image = xcb_image_get (c, win,
 			 0, 0, width, height,
-			 ~0,
+			 0xaaaaaaaa,
 			 format);
+  if (!image) {
+      printf("xcb_image_get failed: exiting\n");
+      exit(1);
+  }
 
   printf ("Create image summary:\n");
   printf (" * format................: %d\n", image->format);
@@ -71,6 +75,7 @@ reflect_window (xcb_connection_t *c,
   printf (" * depth.................: %d\n", image->depth);
   printf (" * bytes/line............: %d\n", image->stride);
   printf (" * bits/pixel (or unit)..: %d\n", image->bpp);
+  printf (" * plane_mask............: %#x\n", image->plane_mask);
 
   printf ("bpl %d %d\n", image->stride, image->height);
 
