@@ -30,6 +30,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include <xcb/xcb.h>
 
@@ -164,6 +165,11 @@ main (int argc, char *argv[])
 		   screen->root_visual,      /* visual              */
 		   mask, valwin);                 /* masks, not used yet */
 
+  /* From the tutorial: set the window title. */
+  xcb_change_property (c, XCB_PROP_MODE_REPLACE, win,
+                       XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
+                       strlen ("drew"), "drew");
+
   /* Map the window on the screen */
   xcb_map_window (c, win);
 
@@ -200,6 +206,11 @@ main (int argc, char *argv[])
 		   XCB_WINDOW_CLASS_INPUT_OUTPUT,/* class               */
 		   screen->root_visual,      /* visual              */
 		   mask, valwin);                 /* masks, not used yet */
+  /* From the tutorial: set the window title. */
+  xcb_change_property (c, XCB_PROP_MODE_REPLACE, new_win,
+                       XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
+                       strlen ("got"), "got");
+
 
   
 
