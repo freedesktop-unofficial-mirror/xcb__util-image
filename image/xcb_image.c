@@ -340,9 +340,7 @@ xcb_image_get (xcb_connection_t *  conn,
           image->plane_mask = plane_mask;
           size = image->height * image->stride;
           dst_plane = image->data;
-	  if (image->bit_order == XCB_IMAGE_ORDER_MSB_FIRST)
-	      rpm = xcb_bit_reverse(plane_mask, imrep->depth);
-	  for (i = 0; i < imrep->depth; i++) {
+	  for (i = imrep->depth - 1; i >= 0; --i) {
 	      if (rpm & (1 << i)) {
 		  memcpy(dst_plane, src_plane, size);
 		  src_plane += size;
