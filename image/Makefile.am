@@ -1,5 +1,3 @@
-MAINTAINERCLEANFILES = Makefile.in
-
 lib_LTLIBRARIES = libxcb-image.la
 
 xcbinclude_HEADERS = xcb_image.h xcb_pixel.h xcb_bitops.h
