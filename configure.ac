@@ -15,7 +15,10 @@ PKG_CHECK_MODULES(XCB_SHM, xcb-shm)
 PKG_CHECK_MODULES(XPROTO, xproto >= 7.0.8)
 PKG_CHECK_MODULES(XCB_UTIL, xcb-util)
 
-AC_OUTPUT([Makefile
-	image/Makefile image/xcb-image.pc
+AC_CONFIG_FILES([
+	Makefile
+	image/Makefile
+	image/xcb-image.pc
 	xcb_util_intro
-	])
+])
+AC_OUTPUT
