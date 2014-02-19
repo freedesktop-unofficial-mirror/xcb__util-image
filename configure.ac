@@ -19,6 +19,5 @@ AC_CONFIG_FILES([
 	Makefile
 	image/Makefile
 	image/xcb-image.pc
-	xcb_util_intro
 ])
 AC_OUTPUT
