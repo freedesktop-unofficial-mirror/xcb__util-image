@@ -28,6 +28,10 @@
 
 /* gcc -g -O2 -Wall `pkg-config --cflags --libs xcb` -o test xcb_image.o test_xcb_image.c */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
