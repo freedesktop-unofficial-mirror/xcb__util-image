@@ -13,8 +13,6 @@ libxcb_image_la_LDFLAGS = -no-undefined
 
 pkgconfig_DATA = xcb-image.pc
 
-EXTRA_DIST=xcb-image.pc.in
-
 noinst_PROGRAMS = test_xcb_image test_formats test_bitmap
 
 if HAVE_SHM
