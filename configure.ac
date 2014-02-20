@@ -19,6 +19,7 @@ PKG_CHECK_MODULES(XCB_UTIL, xcb-util)
 AC_CONFIG_FILES([
 	Makefile
 	image/Makefile
+	test/Makefile
 	image/xcb-image.pc
 ])
 AC_OUTPUT
