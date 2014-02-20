@@ -7,7 +7,7 @@ AM_CFLAGS = $(CWARNFLAGS)
 XCB_IMAGE_LIBS = libxcb-image.la
 
 libxcb_image_la_SOURCES = xcb_image.c
-libxcb_image_la_CPPFLAGS = $(XCB_CFLAGS) $(XCB_SHM_CFLAGS) $(XCB_UTIL_CFLAGS)
+libxcb_image_la_CPPFLAGS = $(XCB_CFLAGS) $(XCB_SHM_CFLAGS) $(XCB_UTIL_CFLAGS) $(XPROTO_CFLAGS)
 libxcb_image_la_LIBADD = $(XCB_LIBS) $(XCB_SHM_LIBS) $(XCB_UTIL_LIBS)
 libxcb_image_la_LDFLAGS = -no-undefined
 
@@ -37,7 +37,7 @@ test_xcb_image_shm_LDADD = $(XCB_LIBS) $(XCB_SHM_LIBS) \
 	$(XCB_UTIL_LIBS) $(XCB_IMAGE_LIBS)
 
 test_formats_SOURCES = test_formats.c
-test_formats_CPPFLAGS = $(XCB_CFLAGS) $(XCB_SHM_CFLAGS) $(XCB_UTIL_CFLAGS)
+test_formats_CPPFLAGS = $(XCB_CFLAGS) $(XCB_SHM_CFLAGS) $(XCB_UTIL_CFLAGS) $(XPROTO_CFLAGS)
 test_formats_LDADD = $(XCB_LIBS) $(XCB_UTIL_LIBS) $(XCB_IMAGE_LIBS)
 
 test_bitmap_SOURCES = test_bitmap.c test.xbm
